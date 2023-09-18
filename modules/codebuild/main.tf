@@ -115,7 +115,7 @@ resource "aws_codebuild_project" "buildgitea" {
     location              = var.location
     name                  = var.nameart
     packaging             = "ZIP"
-    path                  = "giteapipeline/SourceArti/ZRe7z8k.zip"
+    path                  = "giteapipeline/SourceArti/xASEMjf.zip"
     artifact_identifier   = "buildspec.yml"
   }
 }
