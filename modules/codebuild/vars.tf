@@ -1,20 +1,7 @@
 
-variable "codebuild_project_name" {
-  default = "buildapp"
+variable "location" {
+  default = "codepipeline-us-east-1-5623379789"
 }
-
-variable "codebuild_tracking_name" {
-  default = "giteaname"
-}
-variable "ownerGit" {
-  default = "AnichkaKb"
-}
-variable "repo" {
-  default = "gitea3"
-}
-variable "branch" {
-  default = "main"
-}
-variable "Gittoken" {
-  default = "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"
+variable "nameart" {
+  default = "build"
 }
