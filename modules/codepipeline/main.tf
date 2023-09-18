@@ -6,15 +6,27 @@ module "elasticbeanstalk" {
   source = "../elasticbeanstalk"
   beanstalkrole_name = "beanstalkgitea"
 }
-module "role_codepipeline" {
-  source = "../role_codepipeline"
-}
 
+resource "aws_iam_role" "codepipeline_role" {
+  name = "codepipeline_role2"
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect = "Allow",
+        Principal = {
+          Service = "codepipeline.amazonaws.com"
+        },
+        Action = "sts:AssumeRole"
+      }
+    ]
+  })
+}
 
 
 resource "aws_codepipeline" "codepipelinegitea" {
     name = "codepipelinegitea"
-    role_arn = module.role_codepipeline.codepipeline_role
+    role_arn = aws_iam_role.codepipeline_role.arn
 
   artifact_store {
     location = "s3://codepipeline-us-east-1-56233797892"
